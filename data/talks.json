@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1,
+    "title": "Quantum Neural Networks: The Future of AI",
+    "speakers": ["Dr. Elena Vance", "Marcus Thorne"],
+    "categories": ["Quantum", "AI", "Future"],
+    "startTime": "10:00",
+    "endTime": "11:00",
+    "description": "Exploring how quantum computing can accelerate neural network training and unlock new capabilities in machine learning models."
+  },
+  {
+    "id": 2,
+    "title": "Securing the Mesh: Zero Trust Architecture in 2026",
+    "speakers": ["Sarah Jenkins"],
+    "categories": ["Security", "Cloud"],
+    "startTime": "11:10",
+    "endTime": "12:10",
+    "description": "A deep dive into implementing Zero Trust across multi-cloud environments using modern service mesh technologies."
+  },
+  {
+    "id": 3,
+    "title": "Next-Gen Web: WebAssembly and the Edge",
+    "speakers": ["Liam Chen"],
+    "categories": ["Web", "Performance"],
+    "startTime": "12:20",
+    "endTime": "13:20",
+    "description": "How WebAssembly is shifting complex computations from central servers to the edge, delivering near-native performance in the browser."
+  },
+  {
+    "id": "lunch",
+    "title": "Lunch Break",
+    "speakers": [],
+    "categories": ["Social"],
+    "startTime": "13:20",
+    "endTime": "14:20",
+    "description": "Network with fellow attendees and enjoy our high-tech buffet."
+  },
+  {
+    "id": 4,
+    "title": "The Rust Revolution: System Safety by Design",
+    "speakers": ["Anya Petrova"],
+    "categories": ["Rust", "Systems"],
+    "startTime": "14:20",
+    "endTime": "15:20",
+    "description": "Why industry leaders are migrating critical infrastructure to Rust and how it eliminates entire classes of memory safety bugs."
+  },
+  {
+    "id": 5,
+    "title": "Autonomous DevOps: AI-Driven SRE",
+    "speakers": ["David Miller", "Sofia Rossi"],
+    "categories": ["DevOps", "AI"],
+    "startTime": "15:30",
+    "endTime": "16:30",
+    "description": "Leveraging generative AI to automate incident response, capacity planning, and automated code reviews in production."
+  },
+  {
+    "id": 6,
+    "title": "The Metaverse Protocol: Open Standards for Virtual Worlds",
+    "speakers": ["Hiroshi Tanaka"],
+    "categories": ["Metaverse", "Standards"],
+    "startTime": "16:40",
+    "endTime": "17:40",
+    "description": "Defining the interoperability layer for virtual assets and identities across different metaverse platforms."
+  }
+]

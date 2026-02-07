@@ -1,0 +1,178 @@
+:root {
+    --bg-color: #050505;
+    --card-bg: #121212;
+    --neon-blue: #00f3ff;
+    --neon-pink: #ff00ff;
+    --neon-green: #39ff14;
+    --text-color: #e0e0e0;
+    --accent-color: #7000ff;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Roboto Mono', monospace;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header {
+    text-align: center;
+    padding: 60px 0;
+    border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+    position: relative;
+}
+
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3.5rem;
+    margin: 0;
+    color: var(--neon-blue);
+    text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue);
+    letter-spacing: 5px;
+}
+
+.tagline {
+    font-size: 1.2rem;
+    color: var(--neon-pink);
+    text-transform: uppercase;
+    margin-top: 10px;
+    letter-spacing: 2px;
+}
+
+/* Filters */
+.filter-section {
+    margin: 40px 0;
+    padding: 20px;
+    background: rgba(112, 0, 255, 0.05);
+    border: 1px solid rgba(112, 0, 255, 0.2);
+    border-radius: 5px;
+}
+
+.filter-label {
+    font-size: 0.8rem;
+    color: var(--neon-pink);
+    margin-bottom: 15px;
+}
+
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tag {
+    padding: 8px 16px;
+    border: 1px solid var(--neon-blue);
+    color: var(--neon-blue);
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    border-radius: 20px;
+    background: transparent;
+}
+
+.tag.active {
+    background-color: var(--neon-blue);
+    color: var(--bg-color);
+    box-shadow: 0 0 15px var(--neon-blue);
+}
+
+.tag:hover:not(.active) {
+    background: rgba(0, 243, 255, 0.1);
+    box-shadow: 0 0 5px var(--neon-blue);
+}
+
+/* Schedule */
+.schedule-container {
+    position: relative;
+    padding: 20px 0 60px 0;
+}
+
+.talk-card {
+    position: relative;
+    margin-bottom: 40px;
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 25px;
+    border-left: 4px solid var(--neon-blue);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.talk-card:hover {
+    transform: translateX(10px);
+    border-color: var(--neon-blue);
+    box-shadow: -5px 0 20px rgba(0, 243, 255, 0.2);
+}
+
+.talk-card.lunch {
+    border-left-color: var(--neon-pink);
+    background: rgba(255, 0, 255, 0.02);
+}
+
+.talk-time {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--neon-pink);
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.talk-title {
+    font-size: 1.5rem;
+    margin: 10px 0;
+    color: #fff;
+}
+
+.talk-speakers {
+    color: var(--neon-green);
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.talk-description {
+    line-height: 1.6;
+    color: #aaa;
+    font-size: 0.95rem;
+}
+
+.talk-categories {
+    margin-top: 15px;
+    display: flex;
+    gap: 8px;
+}
+
+.mini-tag {
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+    color: #888;
+}
+
+/* Animations */
+@keyframes pulse {
+    0% { opacity: 0.5; }
+    50% { opacity: 0.8; }
+    100% { opacity: 0.5; }
+}
+
+footer {
+    text-align: center;
+    padding: 40px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #666;
+    font-size: 0.8rem;
+}
+
+@media (max-width: 600px) {
+    h1 { font-size: 2rem; }
+    .talk-card { padding: 15px; }
+}
