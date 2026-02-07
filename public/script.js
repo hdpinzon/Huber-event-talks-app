@@ -1,9 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
     let allTalks = [];
     let activeFilter = 'All';
+    let searchQuery = '';
 
     const scheduleContainer = document.getElementById('schedule');
     const tagsContainer = document.getElementById('category-tags');
+    const searchInput = document.getElementById('speaker-search');
 
     // Fetch talks from the API
     async function fetchTalks() {
@@ -17,6 +19,12 @@ document.addEventListener('DOMContentLoaded', () => {
             scheduleContainer.innerHTML = '<p style="color: red;">CRITICAL ERROR: Failed to load event data.</p>';
         }
     }
+
+    // Handle search input
+    searchInput.addEventListener('input', (e) => {
+        searchQuery = e.target.value.toLowerCase();
+        renderSchedule();
+    });
 
     // Extract all unique categories and render filter tags
     function renderFilters() {
@@ -39,13 +47,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Render the schedule based on active filter
+    // Render the schedule based on active filter and search query
     function renderSchedule() {
         scheduleContainer.innerHTML = '';
         
-        const filteredTalks = activeFilter === 'All' 
-            ? allTalks 
-            : allTalks.filter(talk => talk.categories.includes(activeFilter) || talk.id === 'lunch');
+        const filteredTalks = allTalks.filter(talk => {
+            const matchesCategory = activeFilter === 'All' || talk.categories.includes(activeFilter) || talk.id === 'lunch';
+            const matchesSpeaker = talk.speakers.some(s => s.toLowerCase().includes(searchQuery)) || talk.id === 'lunch';
+            return matchesCategory && matchesSpeaker;
+        });
+
+        if (filteredTalks.length === 0) {
+            scheduleContainer.innerHTML = '<p class="no-results">NO PROTOCOLS MATCH YOUR SEARCH CRITERIA.</p>';
+            return;
+        }
 
         filteredTalks.forEach(talk => {
             const isLunch = talk.id === 'lunch';
