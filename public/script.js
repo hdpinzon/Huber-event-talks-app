@@ -6,9 +6,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const scheduleContainer = document.getElementById('schedule');
     const tagsContainer = document.getElementById('category-tags');
     const searchInput = document.getElementById('speaker-search');
+    const clearBtn = document.getElementById('clear-filters');
+    const loadingOverlay = document.getElementById('loading-overlay');
 
     // Fetch talks from the API
     async function fetchTalks() {
+        loadingOverlay.style.display = 'flex';
         try {
             const response = await fetch('/api/talks');
             allTalks = await response.json();
@@ -16,7 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
             renderSchedule();
         } catch (error) {
             console.error('Error fetching talks:', error);
-            scheduleContainer.innerHTML = '<p style="color: red;">CRITICAL ERROR: Failed to load event data.</p>';
+            scheduleContainer.innerHTML = '<p style="color: red; padding: 40px; text-align: center;">CRITICAL ERROR: Failed to load event data.</p>';
+        } finally {
+            loadingOverlay.style.display = 'none';
         }
     }
 
@@ -26,7 +31,14 @@ document.addEventListener('DOMContentLoaded', () => {
         renderSchedule();
     });
 
-    // Extract all unique categories and render filter tags
+    // Handle clear filters
+    clearBtn.addEventListener('click', () => {
+        searchQuery = '';
+        activeFilter = 'All';
+        searchInput.value = '';
+        renderFilters();
+        renderSchedule();
+    });
     function renderFilters() {
         const categories = new Set(['All']);
         allTalks.forEach(talk => {

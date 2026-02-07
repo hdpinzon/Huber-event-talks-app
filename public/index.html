@@ -20,15 +20,22 @@
         <section id="filters" class="filter-section">
             <div class="search-container">
                 <div class="filter-label">SEARCH BY SPEAKER:</div>
-                <input type="text" id="speaker-search" placeholder="Enter speaker name..." class="neon-input">
+                <div class="search-wrapper">
+                    <input type="text" id="speaker-search" placeholder="Enter speaker name..." class="neon-input" aria-label="Search by speaker name">
+                    <button id="clear-filters" class="btn-clear" aria-label="Clear all filters">CLEAR PROTOCOLS</button>
+                </div>
             </div>
             <div class="filter-label">FILTER BY CATEGORY:</div>
-            <div id="category-tags" class="tags-container">
+            <div id="category-tags" class="tags-container" role="group" aria-label="Filter by category">
                 <!-- Tags will be dynamically populated -->
             </div>
         </section>
 
         <section id="schedule" class="schedule-container">
+            <div id="loading-overlay" class="loading-overlay">
+                <div class="loader"></div>
+                <p>DECRYPTING PROTOCOLS...</p>
+            </div>
             <div class="timeline-line"></div>
             <!-- Talks will be dynamically populated -->
         </section>
