@@ -79,9 +79,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const card = document.createElement('div');
             card.className = `talk-card ${isLunch ? 'lunch' : ''}`;
             
-            const speakers = talk.speakers.length > 0 
-                ? `<div class="talk-speakers">// SPEAKERS: ${talk.speakers.join(', ')}</div>`
-                : '';
+            let speakerHTML = '';
+            if (talk.speakers.length > 0) {
+                const highlightedSpeakers = talk.speakers.map(speaker => {
+                    if (!searchQuery) return speaker;
+                    const regex = new RegExp(`(${searchQuery})`, 'gi');
+                    return speaker.replace(regex, '<span class="highlight">$1</span>');
+                });
+                speakerHTML = `<div class="talk-speakers">// SPEAKERS: ${highlightedSpeakers.join(', ')}</div>`;
+            }
 
             const categories = talk.categories
                 .map(cat => `<span class="mini-tag">#${cat.toUpperCase()}</span>`)
@@ -90,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
             card.innerHTML = `
                 <span class="talk-time">${talk.startTime} - ${talk.endTime}</span>
                 <h3 class="talk-title">${talk.title}</h3>
-                ${speakers}
+                ${speakerHTML}
                 <p class="talk-description">${talk.description}</p>
                 <div class="talk-categories">${categories}</div>
             `;
